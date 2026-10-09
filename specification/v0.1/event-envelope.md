@@ -1,6 +1,6 @@
 # Event envelope
 
-Status: working proposal.
+Status: draft ingestion syntax, outside v0.1 snapshot metric conformance.
 
 An interchange event contains a version, dataset scope, unique event ID, record kind, source reference, occurrence time, collection time and payload. Event identity and entity identity are distinct: several revisions may describe one entity.
 
@@ -12,4 +12,4 @@ Implementations MUST preserve source revision identity when available. Delivery 
 
 Timestamps use RFC 3339 with an explicit offset. Normalisation stores an equivalent instant; a reporting timezone affects boundaries, not event identity. An observed timestamp is not automatically a production-effective timestamp.
 
-The initial conformance datasets contain already reconciled entity records. They do not claim to exercise ingestion or revision handling; envelope conformance cases remain release work.
+Metric datasets contain already reconciled entity records with observed_at and snapshot_as_of_cutoff=true. Collectors select revisions known by the cutoff before producing that snapshot; an envelope received later cannot alter an earlier snapshot. The metric profile does not claim to exercise ingestion or revision selection. A separate ingestion profile is deferred.

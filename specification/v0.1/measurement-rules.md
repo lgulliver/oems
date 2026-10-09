@@ -1,19 +1,33 @@
 # Shared measurement rules
 
-Status: working proposal.
+Status: adopted v0.1 working-draft contract under [RFC 0002](../../rfcs/0002-v0.1-preview-contract.md).
 
-Results identify service, half-open period [start,end), reporting timezone, evidence cutoff, profile version and quality state. UTC boundary instants MUST be supplied so independent implementations need not infer timezone conversion differently.
+## Supported profile and evidence snapshots
 
-Deduplicate logical deployments by their stable service deployment ID. Disclose unresolved qualification records; complete final results require both source coverage and resolved qualification. Build success alone is insufficient evidence.
+This profile accepts reconciled snapshots only. dataset.schema.json defines inputs; metric-result.schema.json defines one result per service. profile_version remains 0.1-draft; implementations MUST also identify the exact draft commit. snapshot_as_of_cutoff=true asserts that every record is the selected revision known by evidence_cutoff. observed_at MUST be no later than the cutoff. A restoration learned later is absent in that snapshot: retain restored_at=null. Snapshot construction/revision reconciliation is an adapter responsibility, not an ingestion-conformance claim.
 
-This initial profile uses service-level results. Pooled ratios require sums of underlying populations, and pooled duration statistics require underlying observations. Implementations MUST NOT average service percentages or medians.
+The reporting window is half-open [start,end), timezone=UTC, with UTC midnight boundaries. start MUST precede end, calendar_days MUST equal the positive number of whole UTC days, and evidence_cutoff MUST be no earlier than end. Reject partial-day/non-UTC windows rather than silently use another denominator. Record timestamps may use equivalent explicit RFC 3339 offsets; boundary instants must have offset zero. This profile supports seconds with up to six fractional digits and known offsets only; reject leap-second notation, excess precision and the unknown-offset marker -00:00 rather than silently round or reinterpret them. Other calendar profiles are deferred.
 
-Mean, median and percentile are distinct statistics. This draft requires median for durations and defines an even-sized median as the mean of the two middle values. p75 is deferred until its interpolation policy is specified.
+collection_complete declares source coverage for all services in the dataset's reporting population. deployment_history_complete separately declares sufficient historical coverage to identify first deployments. recovery_evidence_complete declares episode evidence coverage for every service in the requested onset window. These declarations do not prove flawless incident discovery; adapters MUST document sources and coverage. If coverage differs by service, emit separate datasets with truthful declarations.
 
-Duration units are seconds. Ratios are fractions in [0,1], not percentage numbers. Display software may multiply by 100. Deployment frequency uses deployments per day; day count is the number of reporting calendar dates intersecting the window, supplied in the dataset. The initial fixtures use UTC whole-day windows. Partial-day semantics remain an open release question.
+## Populations and quality
 
-No eligible duration observations yields null. An empty deployment population yields null failure/rework ratios. With complete collection, deployment frequency can be zero. Incomplete collection yields a provisional observed count and no settled frequency rate.
+Deduplicate records, resolve canonical identities and enforce the canonical-model constraints before calculating. Count only qualifying deployments whose effective_at is in the window. qualification_unknown_count counts unresolved qualification records whose declared time coverage affects that service/window.
 
-Unknown classifications stay in the qualifying population. Show the known numerator, denominator, unknown count and lower/upper bounds. Such results are provisional. Do not divide only by the classified subset.
+Metric quality_reasons are unique and sorted lexicographically. Status precedence is:
 
-The supplied metric fixture format records a result's status (complete, provisional or no_observations). It is an illustrative output contract, not yet a published metric-result schema.
+1. Any applicable quality reason gives provisional, including an observed empty set.
+2. With no quality reasons and no eligible observations, ratios and durations give no_observations.
+3. Otherwise complete applies. Complete empty collection gives deployment frequency complete with count=0 and deployments_per_day=0.
+
+Incomplete collection and unresolved qualification affect all five metrics. Unknown classification affects its corresponding ratio. Missing linkage/history affects lead time. Missing episode coverage, unresolved eligibility, unknown failure classifications, open episodes and approximate starts affect recovery. Each metric definition specifies its extra reasons.
+
+Unknown failure/rework classifications remain in the observed qualifying denominator. Classification bounds are numerator/denominator and (numerator+unknown_count)/denominator. They do not account for unobserved or unresolved-qualification deployments: bounds_scope is observed_population if population coverage is provisional, otherwise full_population. A settled ratio is emitted only when both population and classification are complete. Zero denominator gives null bounds and ratio.
+
+## Statistics and output context
+
+Durations use seconds. Use the median; for even populations it is the mean of the two middle values. Empty eligible observations yield null. p75 is deferred. Ratios are fractions in [0,1]. Frequency is qualifying deployments per whole UTC reporting day.
+
+Every result MUST include dataset_id, service_id, profile_version, window, evidence_cutoff and qualification_unknown_count, alongside metric counts and quality. An observed value with provisional quality is not a settled population statistic.
+
+Results are service-level. Pooled ratios require summed populations; pooled duration medians require underlying observations. Implementations MUST NOT average service percentages or medians.

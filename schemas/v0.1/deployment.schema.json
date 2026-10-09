@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Deployment",
-  "description": "OEMS v0.1 working draft; semantic constraints also apply.",
+  "description": "OEMS v0.1 draft contract; semantic constraints also apply.",
   "type": "object",
   "required": [
     "id",
@@ -13,7 +13,12 @@
     "change_ids",
     "failure",
     "rework",
-    "source_refs"
+    "source_refs",
+    "observed_at",
+    "change_links_complete",
+    "qualification_window",
+    "failure_evidence_refs",
+    "rework_evidence_refs"
   ],
   "properties": {
     "id": {
@@ -57,7 +62,8 @@
       "anyOf": [
         {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-5][0-9](\\.[0-9]{1,6})?([Zz]|\\+[0-9]{2}:[0-9]{2}|-(?!00:00)[0-9]{2}:[0-9]{2})$"
         },
         {
           "type": "null"
@@ -85,7 +91,110 @@
         "not_incident_driven",
         "unknown"
       ]
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-5][0-9](\\.[0-9]{1,6})?([Zz]|\\+[0-9]{2}:[0-9]{2}|-(?!00:00)[0-9]{2}:[0-9]{2})$"
+    },
+    "change_links_complete": {
+      "type": "boolean"
+    },
+    "qualification_window": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-5][0-9](\\.[0-9]{1,6})?([Zz]|\\+[0-9]{2}:[0-9]{2}|-(?!00:00)[0-9]{2}:[0-9]{2})$"
+            },
+            "end": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-5][0-9](\\.[0-9]{1,6})?([Zz]|\\+[0-9]{2}:[0-9]{2}|-(?!00:00)[0-9]{2}:[0-9]{2})$"
+            }
+          },
+          "required": [
+            "start",
+            "end"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "failure_evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "uniqueItems": true
+    },
+    "rework_evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "uniqueItems": true
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "failure": {
+            "enum": [
+              "failed",
+              "no_recorded_failure"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "failure_evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "rework": {
+            "enum": [
+              "incident_driven",
+              "not_incident_driven"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "rework_evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
 }

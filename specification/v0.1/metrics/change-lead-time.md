@@ -1,17 +1,17 @@
 # Change lead time
 
-Status: proposed OEMS DORA measurement profile.
+Status: adopted OEMS v0.1 draft measurement profile; not a stable release.
 
 ## Research framing
 
-DORA describes this measure as commit to production elapsed time. See [the primary research guide](https://dora.dev/guides/dora-metrics/). The detailed rules below are OEMS proposals, not an assertion that DORA prescribes these calculations.
+DORA describes this measure as commit to production elapsed time. See [the primary research guide](https://dora.dev/guides/dora-metrics/). The detailed rules below are OEMS policies, not an assertion that DORA prescribes these calculations.
 
-## Proposed calculation
+## Calculation and evidence
 
-For each change first deployed to this service during the window, subtract its committer timestamp from that first deployment's effective_at. Compute the median of valid durations. Use reconciled history to exclude changes already deployed before the window. A dataset MUST declare whether deployment history is sufficient to identify the first deployment.
+Use the first qualifying production-effective deployment of each canonical repository/commit to the service. If that first time lies in [start,end), subtract the committer timestamp and take the median. A repeat deployment or rollback to the same commit does not create another lead-time observation for that service. A deployed squash commit is the unit; PR-first-commit elapsed time is a separate flow metric.
 
-## Evidence and edge cases
+Inspect all qualifying history before end, including records before start. Missing history, unresolved qualification before end, incomplete linkage, unresolved change IDs or incomplete collection prevent confirmation of first deployment. Missing qualification before the window still affects history. In that situation observation_count=0 and median_seconds=null; candidate_count records linked changes whose earliest known qualifying deployment is in the window. Candidates are not confirmed observations. unresolved_change_count counts distinct missing change IDs in that history; linkage_unknown_count counts qualifying historical deployments with change_links_complete=false.
 
-Missing change links or insufficient history make coverage incomplete; missing timestamps are not zero. A deployed squash commit is the default unit; an earlier PR-first-commit measure is a separate flow metric. Report linked observations and unresolved provenance.
+Quality reasons are the shared population reasons plus incomplete_history, incomplete_change_linkage and unresolved_change_links as applicable. With complete evidence, a configuration-only deployment with complete empty linkage supplies no duration, not a zero duration. Negative durations are invalid semantic evidence.
 
-Apply [shared measurement rules](../measurement-rules.md). Preserve the measurement period, evidence cutoff, population, profile version and missing-data counts. Inspect [conformance cases](../../../conformance/v0.1/README.md); this initial set is incomplete and does not support a certification claim.
+Apply [shared measurement rules](../measurement-rules.md) and [canonical constraints](../canonical-data-model.md). Check the [conformance fixtures](../../../conformance/v0.1/README.md). Passing these fixtures does not establish certification.

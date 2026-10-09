@@ -1,14 +1,14 @@
 # Governance
 
-Status: proposed initial governance.
+Status: active maintainer-led governance for the working draft.
 
-Liam Gulliver (@lgulliver) is the initial maintainer. Decisions and rationale are recorded in GitHub issues, pull requests and RFCs. No external steering committee or endorsement is implied.
+Liam Gulliver (@lgulliver) is the sole maintainer and decision-maker at this stage. Decisions and rationale are recorded in GitHub issues, pull requests and RFCs. No external steering committee or endorsement is implied.
 
 ## Decisions
 
 Editorial corrections can be proposed directly in a pull request. Changes to record meaning, calculation rules, privacy expectations, compatibility or conformance requirements require an RFC before acceptance.
 
-An RFC describes the problem, proposed rules, alternatives, compatibility impact, evidence and examples. The maintainer records acceptance, rejection or deferral with reasons. Unresolved objections remain visible. An author must not describe a proposal as accepted without a recorded decision.
+An RFC describes the problem, rules, alternatives, compatibility impact, evidence and examples. The sole maintainer may decide and implement a bounded draft change directly; no committee vote or additional maintainer approval is required. Record the decision and rationale in the RFC and commit the coordinated specification, schema and fixture change. Discussions may inform decisions but do not require a separate proposal-only waiting period. Unresolved objections remain visible. Do not claim acceptance without a recorded maintainer decision.
 
 Contributors can challenge a decision in a linked issue with a concrete counterexample or alternative. Governance changes use the same public RFC process.
 

@@ -16,7 +16,8 @@
       "name": "Beacon",
       "source_refs": [
         "https://example.invalid/services/beacon"
-      ]
+      ],
+      "observed_at": "2026-10-12T00:00:00Z"
     }
   ],
   "deployments": [
@@ -37,6 +38,15 @@
       "rework": "not_incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d1"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d1/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d1/intent-review"
       ]
     },
     {
@@ -51,6 +61,15 @@
       "rework": "not_incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d2"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d2/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d2/intent-review"
       ]
     },
     {
@@ -65,6 +84,15 @@
       "rework": "not_incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d3"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d3/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d3/intent-review"
       ]
     },
     {
@@ -79,6 +107,15 @@
       "rework": "not_incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d4"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d4/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d4/intent-review"
       ]
     },
     {
@@ -93,6 +130,15 @@
       "rework": "not_incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d5"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d5/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d5/intent-review"
       ]
     },
     {
@@ -107,6 +153,15 @@
       "rework": "incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d6"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d6/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d6/intent-review"
       ]
     },
     {
@@ -121,6 +176,15 @@
       "rework": "incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d7"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d7/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d7/intent-review"
       ]
     },
     {
@@ -135,6 +199,15 @@
       "rework": "not_incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d8"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d8/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d8/intent-review"
       ]
     },
     {
@@ -149,6 +222,15 @@
       "rework": "not_incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d9"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d9/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d9/intent-review"
       ]
     },
     {
@@ -163,6 +245,15 @@
       "rework": "not_incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d10"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d10/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d10/intent-review"
       ]
     }
   ],
@@ -174,7 +265,8 @@
       "committed_at": "2026-10-01T07:00:00Z",
       "source_refs": [
         "https://example.invalid/commits/c1"
-      ]
+      ],
+      "observed_at": "2026-10-12T00:00:00Z"
     },
     {
       "id": "change:c2",
@@ -183,7 +275,8 @@
       "committed_at": "2026-10-01T06:00:00Z",
       "source_refs": [
         "https://example.invalid/commits/c2"
-      ]
+      ],
+      "observed_at": "2026-10-12T00:00:00Z"
     },
     {
       "id": "change:c3",
@@ -192,7 +285,8 @@
       "committed_at": "2026-10-01T05:00:00Z",
       "source_refs": [
         "https://example.invalid/commits/c3"
-      ]
+      ],
+      "observed_at": "2026-10-12T00:00:00Z"
     },
     {
       "id": "change:c4",
@@ -201,7 +295,8 @@
       "committed_at": "2026-10-01T00:00:00Z",
       "source_refs": [
         "https://example.invalid/commits/c4"
-      ]
+      ],
+      "observed_at": "2026-10-12T00:00:00Z"
     }
   ],
   "incidents": [
@@ -214,7 +309,10 @@
       "start_is_approximate": false,
       "source_refs": [
         "https://example.invalid/incidents/i1"
-      ]
+      ],
+      "observed_at": "2026-10-12T00:00:00Z"
     }
-  ]
+  ],
+  "snapshot_as_of_cutoff": true,
+  "recovery_evidence_complete": true
 }

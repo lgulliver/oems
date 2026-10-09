@@ -1,6 +1,6 @@
 # RFC 0001 Scope and design goals
 
-Status: proposed
+Status: adopted for the v0.1 working draft
 Author: Liam Gulliver
 Affected draft line: v0.1
 
@@ -8,7 +8,7 @@ Affected draft line: v0.1
 
 Tools can report identical metric names using different deployment units, timestamps and evidence assumptions. Small organisations need understandable results across mixed providers.
 
-## Proposal
+## Adopted scope
 
 Define a service-level delivery vocabulary, provenance envelope, five DORA calculation policies and synthetic test vectors. Publish language-neutral JSON Schemas and prose together. Keep application collectors and UI outside this repository.
 
@@ -26,12 +26,12 @@ No released consumers exist. This draft may change. Proposed cases cover complet
 
 ## Open questions
 
-- Confirm production rollout grouping and ambiguous deployment handling.
-- Agree failure-onset evidence and approximation rules.
+- Production rollout grouping and unknown qualification are defined in RFC 0002.
+- Failure-onset evidence and separate approximate recovery statistics are defined in RFC 0002.
 - Decide how immutable evidence and privacy deletion interact.
 - Define conformance-claim policy. Licensing and contribution terms are recorded in [LICENSING.md](../LICENSING.md).
-- Validate deployment and change provenance across classic and YAML pipelines.
+- Validate source adapters and provenance across provider pipeline styles; this is adapter work beyond the reconciled-snapshot profile.
 
 ## Decision record
 
-Not yet accepted. The files in this repository illustrate the proposal and do not imply a final standards decision.
+The sole maintainer directed progression from review proposals into an implemented working-draft contract on 2026-10-09. The service-level scope and independence goals are adopted; RFC 0002 records the operational choices. Production grouping, onset approximation and first-deployment provenance are implemented there. Snapshot retention/privacy deletion and broader adapter provenance remain future work; their open questions do not block this bounded snapshot profile. This is not acceptance of a stable release or standards-body endorsement.

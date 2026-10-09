@@ -1,17 +1,15 @@
 # Change fail rate
 
-Status: proposed OEMS DORA measurement profile.
+Status: adopted OEMS v0.1 draft measurement profile; not a stable release.
 
 ## Research framing
 
-DORA describes this measure as share of production deployments requiring immediate intervention. See [the primary research guide](https://dora.dev/guides/dora-metrics/). The detailed rules below are OEMS proposals, not an assertion that DORA prescribes these calculations.
+DORA describes this measure as share of production deployments requiring immediate intervention. See [the primary research guide](https://dora.dev/guides/dora-metrics/). The detailed rules below are OEMS policies, not an assertion that DORA prescribes these calculations.
 
-## Proposed calculation
+## Calculation and evidence
 
-Use qualifying deployments in the window as the denominator. Count distinct deployments classified failed as the numerator. Unknown failure classifications remain in the denominator. lower_bound=numerator/denominator; upper_bound=(numerator+unknown_count)/denominator.
+Use qualifying deployments in [start,end) as the observed denominator. Count distinct deployments with failure=failed as the numerator. failed means a production-effective rollout required immediate remedial intervention because of its production impact, such as a rollback or corrective hotfix. Immediate intervention describes a response needed to remediate the deployment, not scheduled improvement work; no universal elapsed-time threshold is imposed. Adapters MUST document the decision and its evidence reference. CI/build failure alone is insufficient.
 
-## Evidence and edge cases
+Unknown classifications remain in the denominator. Bounds are numerator/denominator and (numerator+unknown_count)/denominator. Add unknown_failure_classification to quality_reasons when unknown_count>0. Apply the shared bounds_scope and settled ratio rules. no_recorded_failure means no confirmed failure found in the stated evidence, not guaranteed absence of failure.
 
-Zero denominator gives null bounds. Unknown classifications make the result provisional. No recorded failure describes the available evidence, not guaranteed absence of failure. CI failure alone does not classify a production failure.
-
-Apply [shared measurement rules](../measurement-rules.md). Preserve the measurement period, evidence cutoff, population, profile version and missing-data counts. Inspect [conformance cases](../../../conformance/v0.1/README.md); this initial set is incomplete and does not support a certification claim.
+Apply [shared measurement rules](../measurement-rules.md) and [canonical constraints](../canonical-data-model.md). Check the [conformance fixtures](../../../conformance/v0.1/README.md). Passing these fixtures does not establish certification.

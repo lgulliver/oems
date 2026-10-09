@@ -1,13 +1,13 @@
 # Terminology
 
-Status: working proposal.
+Status: adopted v0.1 working-draft terminology.
 
 | Term | Meaning |
 | --- | --- |
 | Service | Logical deployable unit and default measurement scope |
 | Deployment attempt | Execution that may or may not change production |
-| Qualifying deployment | One service rollout that makes version/configuration effective in production |
-| Rollout group | Identifier joining subordinate tenant, host or regional outcomes |
+| Qualifying deployment | One canonical service rollout at first confirmed production-consumer exposure |
+| Rollout group | Canonical rollout identity within a service; subordinate outcomes do not count separately |
 | Change | Version-control commit, identified with repository provenance |
 | Incident | Confirmed production-impact episode |
 | Recovery episode | A service's failure onset and confirmed restoration |

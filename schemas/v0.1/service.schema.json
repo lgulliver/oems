@@ -1,12 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Service",
-  "description": "OEMS v0.1 working draft; semantic constraints also apply.",
+  "description": "OEMS v0.1 draft contract; semantic constraints also apply.",
   "type": "object",
   "required": [
     "id",
     "name",
-    "source_refs"
+    "source_refs",
+    "observed_at"
   ],
   "properties": {
     "id": {
@@ -27,6 +28,11 @@
     "name": {
       "type": "string",
       "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-5][0-9](\\.[0-9]{1,6})?([Zz]|\\+[0-9]{2}:[0-9]{2}|-(?!00:00)[0-9]{2}:[0-9]{2})$"
     }
   },
   "additionalProperties": false

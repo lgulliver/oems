@@ -4,7 +4,8 @@
     "name": "Beacon",
     "source_refs": [
       "https://example.invalid/services/beacon"
-    ]
+    ],
+    "observed_at": "2026-10-12T00:00:00Z"
   },
   "change": {
     "id": "change:c1",
@@ -13,7 +14,8 @@
     "committed_at": "2026-10-01T07:00:00Z",
     "source_refs": [
       "https://example.invalid/commits/c1"
-    ]
+    ],
+    "observed_at": "2026-10-12T00:00:00Z"
   },
   "deployment": {
     "id": "deployment:d1",
@@ -32,6 +34,15 @@
     "rework": "not_incident_driven",
     "source_refs": [
       "https://example.invalid/deployments/d1"
+    ],
+    "observed_at": "2026-10-12T00:00:00Z",
+    "change_links_complete": true,
+    "qualification_window": null,
+    "failure_evidence_refs": [
+      "https://example.invalid/deployments/d1/failure-review"
+    ],
+    "rework_evidence_refs": [
+      "https://example.invalid/deployments/d1/intent-review"
     ]
   },
   "incident": {
@@ -43,7 +54,8 @@
     "start_is_approximate": false,
     "source_refs": [
       "https://example.invalid/incidents/i1"
-    ]
+    ],
+    "observed_at": "2026-10-12T00:00:00Z"
   },
   "envelope": {
     "spec_version": "0.1-draft",
@@ -52,7 +64,7 @@
     "record_type": "deployment",
     "source_revision": "1",
     "occurred_at": "2026-10-01T08:00:00Z",
-    "observed_at": "2026-10-01T08:01:00Z",
+    "observed_at": "2026-10-12T00:00:00Z",
     "source_refs": [
       "https://example.invalid/deployments/d1"
     ],
@@ -73,6 +85,15 @@
       "rework": "not_incident_driven",
       "source_refs": [
         "https://example.invalid/deployments/d1"
+      ],
+      "observed_at": "2026-10-12T00:00:00Z",
+      "change_links_complete": true,
+      "qualification_window": null,
+      "failure_evidence_refs": [
+        "https://example.invalid/deployments/d1/failure-review"
+      ],
+      "rework_evidence_refs": [
+        "https://example.invalid/deployments/d1/intent-review"
       ]
     }
   }

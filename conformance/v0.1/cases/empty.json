@@ -16,10 +16,13 @@
       "name": "Beacon",
       "source_refs": [
         "https://example.invalid/services/beacon"
-      ]
+      ],
+      "observed_at": "2026-10-12T00:00:00Z"
     }
   ],
   "deployments": [],
   "changes": [],
-  "incidents": []
+  "incidents": [],
+  "snapshot_as_of_cutoff": true,
+  "recovery_evidence_complete": true
 }

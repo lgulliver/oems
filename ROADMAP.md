@@ -2,8 +2,8 @@
 
 ## Initial draft
 
-- Agree the scope and service deployment unit in RFC 0001.
-- Resolve the evidence, population and output-contract decisions in [RFC 0002](rfcs/0002-v0.1-preview-contract.md).
+- Adopted the scope and service deployment unit in RFC 0001.
+- Implemented evidence, population and output contracts from [RFC 0002](rfcs/0002-v0.1-preview-contract.md), with schemas, fixtures and CI.
 - Review the five DORA calculation policies against realistic workflows.
 - Refine record identity, revisions, source evidence and unknown values.
 - Define conformance claims and expand semantic test cases.
@@ -11,7 +11,7 @@
 
 ## Before a first release
 
-Add shared incidents, open recovery episodes, rollout fan-out, squash/rebase provenance, partial collection, late corrections and timezone boundary cases. Define p75 precisely before requiring it. Confirm how production-effective failures and ambiguous rollout outcomes are represented.
+Shared incidents, open/approximate recovery, fan-out, incomplete collection, unknown qualification and UTC boundary cases are checked. Next validate the contract through a collector/independent implementation and exercise real-world squash/rebase provenance. Non-UTC calendars, partial days and revision-ingestion conformance are separate future profiles. Define p75 precisely before requiring it.
 
 Test the contract with Clio and seek feedback from an independent implementation. Publish an exact version and immutable artifacts only when release gates pass.
 
