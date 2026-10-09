@@ -2,7 +2,7 @@
 
 OEMS is a proposed open specification for describing engineering measurement evidence and calculating transparent, reproducible metrics across tools.
 
-**Status: initial working draft.** There is no stable release, certification programme or claim of standards-body recognition. Licensing is pending; see [LICENSING.md](LICENSING.md).
+**Status: initial working draft.** There is no stable release, certification programme or claim of standards-body recognition. Repository materials are licensed under [Apache 2.0](LICENSE); see [LICENSING.md](LICENSING.md) for scope and contribution terms.
 
 ## Why this exists
 

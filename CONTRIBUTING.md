@@ -1,6 +1,6 @@
 # Contributing
 
-This repository contains a working proposal. Read [LICENSING.md](LICENSING.md) before submitting material: redistribution and contribution terms are not yet settled.
+This repository contains a working proposal. Read [LICENSING.md](LICENSING.md) before submitting material. Contributions intentionally submitted for inclusion are provided under [Apache 2.0](LICENSE), unless explicitly stated otherwise, as described in section 5 of the licence. Submit only material you have the right to contribute under those terms.
 
 Use an issue to report unclear meaning, a conflicting calculation, missing evidence handling or an interoperability problem. Include a synthetic example, expected interpretation, relevant draft section and the impact on an independent implementation.
 

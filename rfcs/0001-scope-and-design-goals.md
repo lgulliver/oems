@@ -29,7 +29,7 @@ No released consumers exist. This draft may change. Proposed cases cover complet
 - Confirm production rollout grouping and ambiguous deployment handling.
 - Agree failure-onset evidence and approximation rules.
 - Decide how immutable evidence and privacy deletion interact.
-- Select licensing, contribution terms and conformance-claim policy.
+- Define conformance-claim policy. Licensing and contribution terms are recorded in [LICENSING.md](../LICENSING.md).
 - Validate deployment and change provenance across classic and YAML pipelines.
 
 ## Decision record

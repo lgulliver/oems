@@ -6,7 +6,7 @@
 - Review the five DORA calculation policies against realistic workflows.
 - Refine record identity, revisions, source evidence and unknown values.
 - Define conformance claims and expand semantic test cases.
-- Resolve licensing and contribution terms.
+- Licensing and contribution terms are established under [Apache 2.0](LICENSING.md).
 
 ## Before a first release
 
