@@ -1,0 +1,36 @@
+{
+  "service_id": "service:beacon",
+  "profile_version": "0.1-draft",
+  "deployment_frequency": {
+    "status": "complete",
+    "count": 10,
+    "deployments_per_day": 1
+  },
+  "change_lead_time": {
+    "status": "complete",
+    "observation_count": 4,
+    "median_seconds": 9000
+  },
+  "change_fail_rate": {
+    "status": "complete",
+    "numerator": 1,
+    "denominator": 10,
+    "unknown_count": 0,
+    "lower_bound": 0.1,
+    "upper_bound": 0.1
+  },
+  "failed_deployment_recovery_time": {
+    "status": "complete",
+    "observation_count": 1,
+    "open_count": 0,
+    "median_seconds": 1800
+  },
+  "deployment_rework_rate": {
+    "status": "complete",
+    "numerator": 2,
+    "denominator": 10,
+    "unknown_count": 0,
+    "lower_bound": 0.2,
+    "upper_bound": 0.2
+  }
+}

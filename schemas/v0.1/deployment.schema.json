@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Deployment",
+  "description": "OEMS v0.1 working draft; semantic constraints also apply.",
+  "type": "object",
+  "required": [
+    "id",
+    "service_id",
+    "rollout_group_id",
+    "environment",
+    "qualification",
+    "effective_at",
+    "change_ids",
+    "failure",
+    "rework",
+    "source_refs"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "minItems": 1
+    },
+    "extensions": {
+      "type": "object"
+    },
+    "service_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rollout_group_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "enum": [
+        "production",
+        "non_production",
+        "unknown"
+      ]
+    },
+    "qualification": {
+      "enum": [
+        "qualifying",
+        "excluded",
+        "unknown"
+      ]
+    },
+    "effective_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "change_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "failure": {
+      "enum": [
+        "failed",
+        "no_recorded_failure",
+        "unknown"
+      ]
+    },
+    "rework": {
+      "enum": [
+        "incident_driven",
+        "not_incident_driven",
+        "unknown"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

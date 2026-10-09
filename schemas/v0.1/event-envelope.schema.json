@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence event envelope",
+  "description": "OEMS v0.1 working draft; semantic constraints also apply.",
+  "type": "object",
+  "required": [
+    "spec_version",
+    "dataset_id",
+    "event_id",
+    "record_type",
+    "occurred_at",
+    "observed_at",
+    "source_refs",
+    "payload"
+  ],
+  "properties": {
+    "spec_version": {
+      "const": "0.1-draft"
+    },
+    "dataset_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "enum": [
+        "service",
+        "change",
+        "deployment",
+        "incident"
+      ]
+    },
+    "source_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "minItems": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Change",
+  "description": "OEMS v0.1 working draft; semantic constraints also apply.",
+  "type": "object",
+  "required": [
+    "id",
+    "repository_id",
+    "commit_id",
+    "committed_at",
+    "source_refs"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "minItems": 1
+    },
+    "extensions": {
+      "type": "object"
+    },
+    "repository_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "commit_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "committed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}
