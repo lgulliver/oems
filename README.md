@@ -22,6 +22,7 @@ DORA supplies the research framing. OEMS proposes operational rules and intercha
 
 - [Draft specification](specification/v0.1/overview.md)
 - [Scope and design proposal](rfcs/0001-scope-and-design-goals.md)
+- [Technical review and proposed preview contract](rfcs/0002-v0.1-preview-contract.md)
 - [Schemas](schemas/v0.1/README.md) and [examples](examples/v0.1/README.md)
 - [Conformance cases](conformance/v0.1/README.md)
 - [Contribution process](CONTRIBUTING.md), [governance](GOVERNANCE.md) and [versioning](VERSIONING.md)

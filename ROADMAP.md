@@ -3,6 +3,7 @@
 ## Initial draft
 
 - Agree the scope and service deployment unit in RFC 0001.
+- Resolve the evidence, population and output-contract decisions in [RFC 0002](rfcs/0002-v0.1-preview-contract.md).
 - Review the five DORA calculation policies against realistic workflows.
 - Refine record identity, revisions, source evidence and unknown values.
 - Define conformance claims and expand semantic test cases.
